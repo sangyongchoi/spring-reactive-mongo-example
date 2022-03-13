@@ -17,6 +17,13 @@ class DemoController(
         return demoService.get(title)
     }
 
+    @GetMapping("/get1")
+    suspend fun get1(
+        @RequestParam title: String
+    ): List<Demo>? {
+        return demoService.get1(title)
+    }
+
     @PostMapping("/create")
     suspend fun create(
         @RequestParam title: String

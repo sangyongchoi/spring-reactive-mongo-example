@@ -15,6 +15,10 @@ class DemoService(
         return demoRepository.findAll(demo.title.eq(title)).collectList().awaitSingle() ?: emptyList()
     }
 
+    suspend fun get1(title: String): List<Demo> {
+        return demoRepository.findBy(title).collectList().awaitSingle() ?: emptyList()
+    }
+
     suspend fun create(title: String) {
         demoRepository.save(Demo(title = title)).subscribe()
     }
